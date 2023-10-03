@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function SuperMath() {
+}
+
+
+SuperMath.prototype.input = function () {
+    obj = {
+        x: parseInt(prompt("Enter x")),
+        y: parseInt(prompt("Enter y")),
+        znak: prompt("Enter operator + - / * % = > <")
+    };
+    if (obj.znak === "+" || obj.znak === "-" || obj.znak === "/" || obj.znak === "*" || obj.znak === "%" || obj.znak === "="  || obj.znak === ">"  || obj.znak === "<") {
+        return obj;
+    } else
+        console.log("Invalid operator");
+        return false;
+};
+
+SuperMath.prototype.znak = function (obj) {
+     switch (obj.znak) {
+        case "+":
+            return obj.x + obj.y;
+        case "-":
+            return obj.x - obj.y;
+        case "*":
+            return obj.x * obj.y;
+        case "/":
+            return obj.x / obj.y;
+        case "%":
+          return obj.x % obj.y;
+        case '=':
+          return obj.X = obj.Y;
+        case '>':
+          return obj.X > obj.Y;
+        case '=':
+          return obj.X < obj.Y;
+        default:
+          return 'Invalid operator';
+    }
+};
+
+p = new SuperMath();
+
+p.check = function (obj) {
+  if (confirm("Do you want to do the operation" )) {
+        return this.znak(obj);
+    } else {
+        obj = this.input();
+        return this.znak(obj);
+    }
+};
+
+if (p.input() !== false) {
+    result = p.check(obj);
+    console.log(result);
+}
+    </script>
+</body>
+</html>
