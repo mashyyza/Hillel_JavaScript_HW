@@ -7,25 +7,39 @@
 </head>
 <body>
     <script>
-        function SuperMath() {
-}
+        function SuperMath()  {
+  this.input = function () {
+      let obj = {
+          x: parseInt(prompt("Enter x")),
+          y: parseInt(prompt("Enter y")),
+          znak: prompt("Enter operator + - / * % = > <")
+      };
 
+      if (obj.znak === "+" || obj.znak === "-" || obj.znak === "/" || obj.znak === "*" || obj.znak === "%" || obj.znak === "=" || obj.znak === ">" || obj.znak === "<") {
+          return obj;
+      } else {
+          console.log("Invalid operator");
+          return false;
+      }
+  };
 
-SuperMath.prototype.input = function () {
-    obj = {
-        x: parseInt(prompt("Enter x")),
-        y: parseInt(prompt("Enter y")),
-        znak: prompt("Enter operator + - / * % = > <")
-    };
-    if (obj.znak === "+" || obj.znak === "-" || obj.znak === "/" || obj.znak === "*" || obj.znak === "%" || obj.znak === "="  || obj.znak === ">"  || obj.znak === "<") {
-        return obj;
-    } else
-        console.log("Invalid operator");
-        return false;
-};
+  this.check = function (obj) {
+    let confirmed = confirm("Do you want to do the operation");
+    if (confirmed) {
+        return this.calculation(obj);
+    } else {
+        obj = this.input();
+        if (obj !== false) {
+            return this.calculation(obj);
+        } else {
+            console.log("Invalid input");
+            return false;
+        }
+      }
+    }
 
-SuperMath.prototype.znak = function (obj) {
-     switch (obj.znak) {
+SuperMath.prototype.calculation = function (obj) {
+    switch (obj.znak) {
         case "+":
             return obj.x + obj.y;
         case "-":
@@ -35,31 +49,24 @@ SuperMath.prototype.znak = function (obj) {
         case "/":
             return obj.x / obj.y;
         case "%":
-          return obj.x % obj.y;
+            return obj.x % obj.y;
         case '=':
-          return obj.X = obj.Y;
+            return obj.x === obj.y;
         case '>':
-          return obj.X > obj.Y;
-        case '=':
-          return obj.X < obj.Y;
+            return obj.x > obj.y;
+        case '<':
+            return obj.x < obj.y;
         default:
-          return 'Invalid operator';
+            return 'Invalid operator';
     }
 };
+}
 
-p = new SuperMath();
+let p = new SuperMath();
+let inputObject = p.input();
 
-p.check = function (obj) {
-  if (confirm("Do you want to do the operation" )) {
-        return this.znak(obj);
-    } else {
-        obj = this.input();
-        return this.znak(obj);
-    }
-};
-
-if (p.input() !== false) {
-    result = p.check(obj);
+if (inputObject !== false) {
+    var result = p.check(inputObject);
     console.log(result);
 }
     </script>
