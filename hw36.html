@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="input1" class="input-field" value="1">
+    <input type="text" id="input2" class="input-field" value="2">
+    <input type="text" id="input3" class="input-field" value="3">
+    <input type="text" id="input4" class="input-field" value="4">
+    <textarea id="textarea"></textarea>
+    
+    <script>
+        const inputFields = document.querySelectorAll(".input-field");
+        const textarea = document.querySelector("#textarea");
+
+        const interval = setInterval(() => {
+          const values = Array.from(inputFields).map(input => input.value);
+          const joinedValues = values.join(", ");
+          if (textarea.value !== joinedValues) {
+            textarea.value = joinedValues;
+          }
+        }, 1000);
+    </script>
+    
+</body>
+</html>
