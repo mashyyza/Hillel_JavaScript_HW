@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="block">
+        <div class="green"></div>
+        <div class="red"></div>
+        <div class="count"></div>
+    </div>
+    <input type="range" class="range" value="50"/>
+    <input type="number" class="number" max="100" value="50" />
+
+<style>
+    .block {
+        height: 200px;
+        border: 2px solid rgb(0, 0, 0);
+        margin-bottom: 20px;
+        position: relative;
+}
+    .green {
+        bottom: 0;
+        background-color: green;
+
+}
+    .red {
+        background-color: red;
+}
+    .count { 
+        font-size: 1em;
+}
+    .block, .green, .red{
+        width: 50px;
+}
+    .green, .red, .count{
+        position: absolute;
+}
+</style>
+
+<script src="./main.js"></script>
+</body>
+</html>
