@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculation</title>
+</head>
+<body>
+    <style>
+    table {
+        width: 50%;
+        border: 3px solid rgb(110, 146, 218);
+        border-collapse: collapse;
+        background-color: rgb(243, 243, 134);
+      }
+      
+      td {
+        padding: 2px;
+        text-align: center;
+      }
+      
+      th {
+        background-color: rgb(250, 241, 135);
+        text-align: center;
+      }
+    </style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const table = document.createElement('table');
+  
+    for (let i = 1; i <= 10; i++) {
+        const row = document.createElement('tr');
+  
+        for (let j = 1; j <= 10; j++) {
+            const cell = document.createElement('td');
+            const cellValue = (i - 1) * 10 + j;
+            cell.textContent = cellValue;
+            row.appendChild(cell);
+        }
+  
+        table.appendChild(row);
+    }
+  
+    document.body.appendChild(table);
+  });
+  </script>
+</body>
+</html>
