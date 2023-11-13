@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>We practice with event delegation</title>
+</head>
+<body>
+  <table border="1" cellspacing="0" cellpadding="5">
+ <tr>
+ <td>First name</td>
+ <td></td>
+ <td></td>
+ <td></td>
+ <td></td>
+</tr>
+<tr>
+    <td>Male/Famale</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+   </tr>
+   <tr>
+    <td>Age</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+   </tr>
+   <tr>
+    <td>Country</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+   </tr>
+   <tr>
+    <td>Dream</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+   </tr>
+  </table>
+  <style>
+    tr td{
+        width: 100px;
+        height: 100px;
+        color: red;
+    }
+  </style>
+  <script>window.onload = function () {
+    const table = document.querySelector("table");
+    const cells = table.querySelectorAll("td");
+  
+    cells.forEach((cell) => {
+      cell.addEventListener("click", handleClick);
+    });
+  
+    function handleClick(event) {
+      const target = event.target;
+      const text = target.textContent;
+  
+  
+      target.dataset.oldText = text;
+  
+      const textarea = document.createElement("textarea");
+      textarea.textContent = text;
+  
+      const saveButton = document.createElement("button");
+      saveButton.textContent = "Save";
+  
+      const cancelButton = document.createElement("button");
+      cancelButton.textContent = "Cancel";
+  
+      target.innerHTML = "";
+      target.appendChild(textarea);
+      target.appendChild(saveButton);
+      target.appendChild(cancelButton);
+  
+      saveButton.addEventListener("click", handleSave);
+      cancelButton.addEventListener("click", handleCancel);
+    }
+  
+    function handleSave(event) {
+      const target = event.target;
+      const cell = target.parentElement;
+      const textarea = cell.querySelector("textarea");
+      const text = textarea.value;
+  
+      cell.textContent = text;
+    }
+  
+    function handleCancel(event) {
+      const target = event.target;
+      const cell = target.parentElement;
+      cell.textContent = cell.dataset.oldText;
+    }
+  };
+  </script>
+</body>
+</html>
+
+
+
